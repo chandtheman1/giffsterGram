@@ -1,0 +1,26 @@
+{
+  "name": "giffstergram",
+  "version": "1.0.0",
+  "description": "Gif forum board",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chandtheman1/giffsterGram.git"
+  },
+  "author": "chandtheman1, jesse-dejong, mayuri",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chandtheman1/giffsterGram/issues"
+  },
+  "homepage": "https://github.com/chandtheman1/giffsterGram#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "sequelize": "^6.6.5"
+  }
+}
