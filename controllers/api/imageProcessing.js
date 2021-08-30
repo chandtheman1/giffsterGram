@@ -14,14 +14,16 @@ router.get('/', (req, res) => {
 
 // CREATE new Gif
 router.post('/makeGif', async (req, res) => {
-try {
-    const sourceGif = req.body.sourceGif;
-    const sourceText = req.body.sourceText;
-    const sourceName = req.body.sourceName;
+    try {
+        console.log(req.body);
 
-    await addTextToGIF(sourceText, sourceName);
+        const sourceGif = req.body.sourceGif;
+        const sourceText = req.body.sourceText;
+        const sourceName = req.body.sourceName;
 
-    res.status(200).send(`output/${sourceName}.gif`);
+        await addTextToGIF(sourceText, sourceName);
+
+        res.status(200).send(`output/${sourceName}.gif`);
 
     } catch (error) {
         console.error(error);

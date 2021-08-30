@@ -4,6 +4,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
+
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 // import sequelize connection
@@ -32,20 +33,15 @@ app.set('view engine', 'handlebars');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(routes);
-
-
+app.use(routes); // !!DONT MOVE ME!! I break the bodyparsing if I go before the other app.use stuff
 
 
 
 app.get('/', (req, res) => {
   res.render('homepage')
-});
-
-app.post('/controllers/api/addTextToGif', (req, res) => {
-  res.send(addTextToGIF())
 });
 
 // sync sequelize models to the database, then turn on the server
