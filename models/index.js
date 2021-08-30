@@ -4,21 +4,16 @@ const Gif = require('./Gif');
 const Thread = require('./Thread');
 const Tag = require('./Tag');
 const Comment = require ('./Comment');
+const UserThread = require('./UserThread');
 
-User.hasMany(Thread,{
-  foreignKey:'group_id',
-});
-
-Thread.belongsToMany(Users,{
-  foreignKey:'group_id'
-});
-
-Thread.hasMany(User, {
-  foreignKey : 'user_id',
-})
-
-User.belongsToMany(Thread,{
+User.belongsToMany(Thread, {
+  through: UserThread,
   foreignKey:'user_id',
+});
+
+Thread.belongsToMany(User,{
+  through: UserThread,
+  foreignKey:'thread_id'
 })
 
 Gif.hasMany(Tag,{
@@ -29,8 +24,12 @@ Tag.belongsToMany(Gif,{
   foreignKey:'tag_id',
 });
 
-Thread.hasMany(Comment,{
-  foreignKey:'comment_id',
+Thread.hasOne(Comment,{
+  foreignKey:'thread_id',
+});
+
+Comment.belongsTo(Thread,{
+  foreignKey:'thread_id',
 })
 
 

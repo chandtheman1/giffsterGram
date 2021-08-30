@@ -17,13 +17,6 @@ Thread.init({
         }
 
     },
-    user_id: {
-        type:DataTypes.INTEGER,
-        references: {
-            model:'user',
-            key:'id'
-        }
-    },
     public_visibility: {
         type:DataTypes.BOOLEAN,
         allowNulls:false
@@ -36,13 +29,7 @@ Thread.init({
             key:'id'
         }
     },
-    comment_id: {
-        type:DataTypes.INTEGER,
-        references: {
-            model:'comment',
-            key:'id'
-        }
-    },
+    
     
 },
 {

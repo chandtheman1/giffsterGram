@@ -15,7 +15,14 @@ Comment.init({
     content:{
         type:DataTypes.STRING,
         allowNull:false
-    }
+    },
+    thread_id: {
+        type:DataTypes.INTEGER,
+        references: {
+            model:'thread',
+            key:'id'
+        }
+    },
 
 },
 {
