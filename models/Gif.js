@@ -3,6 +3,8 @@ const sequelize = require('../config/connection');
 
 class Gif extends Model {}
 
+class Gif extends Model {}
+
 Gif.init({
     id:{
         type: DataTypes.INTEGER,
@@ -22,11 +24,11 @@ Gif.init({
          allowNull:false, 
       },
       like: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
         allowNull:true, 
       },
       dislike : {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.INTEGER,
         allowNull:true, 
       }
 },

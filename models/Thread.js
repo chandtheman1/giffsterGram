@@ -17,13 +17,6 @@ Thread.init({
             len:[2, 20],
         }
     },
-    user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model:'user',
-            key:'id'
-        }
-    },
     public_visibility: {
         type: DataTypes.BOOLEAN,
         allowNulls: false
@@ -34,7 +27,7 @@ Thread.init({
             model:'user',
             key:'id'
         }
-    }
+    },
 },
 {
     sequelize,
