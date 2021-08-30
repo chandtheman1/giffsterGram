@@ -3,6 +3,8 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 const { Gifs } = require('.');
 
+class Gif extends Model {}
+
 Gif.init({
     id:{
         type:DataTypes.INTEGER,

@@ -1,7 +1,7 @@
 const  { Model, DataTypes } =require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
-
+class Thread extends Model {}
 Thread.init({
     id: {
         type: DataTypes.INTEGER,
@@ -35,7 +35,14 @@ Thread.init({
             model:'user',
             key:'id'
         }
-    }
+    },
+    comment_id: {
+        type:DataTypes.INTEGER,
+        references: {
+            model:'comment',
+            key:'id'
+        }
+    },
     
 },
 {
