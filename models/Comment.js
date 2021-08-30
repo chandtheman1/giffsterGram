@@ -1,7 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt =require('bcrypt');
 const sequelize = require('../config/connection');
-
 
 class Comment extends Model {}
 
@@ -23,12 +21,13 @@ Comment.init({
             key:'id'
         }
     },
-
 },
 {
-    sequelize
-}
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'Comment',
+});
 
-);
-
-module.exports =Comment;
+module.exports = Comment;

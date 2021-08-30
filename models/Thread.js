@@ -1,4 +1,4 @@
-const  { Model, DataTypes } =require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Thread extends Model {}
@@ -39,5 +39,3 @@ Thread.init({
 );
 
 module.exports = Thread;
-
-
