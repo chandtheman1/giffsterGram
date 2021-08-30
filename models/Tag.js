@@ -1,8 +1,8 @@
 const  { Model, DataTypes } =require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class Tag extends Model {}
+
 Tag.init({
     id: {
         type: DataTypes.INTEGER,
@@ -16,21 +16,8 @@ Tag.init({
         validate :{
             len:[2, 10],
         }
-
-    },
-    isPublic : {
-        type: DataTypes.BOOLEAN,
-        allowNulls : false,       
-    },
-    admin: {
-        type:DataTypes.INTEGER,
-        references: {
-            model:'user',
-            key:'id'
-        }
     },
 },
-
     {
         sequelize,
         timestamps: false,
@@ -41,4 +28,3 @@ Tag.init({
 );
     
     module.exports = Tag;
-    
