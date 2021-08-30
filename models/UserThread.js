@@ -1,30 +1,28 @@
 const { Model, DataTypes } = require('sequelize');
-
 const sequelize = require('../config/connection');
 
 class UserThread extends Model {}
 
 UserThread.init(
   {
-    // define columns
     id: {
       type:DataTypes.INTEGER,
-      allowNull:false,
-      primaryKey:true,
-      autoIncrement:true
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true
     },
-    user_id :{
+    user_id: {
       type:DataTypes.INTEGER,
-      references:{
-        model:'user',
-        key:'id'
+      references: {
+        model: 'user',
+        key: 'id'
       }
     },
-    thread_id : {
+    thread_id: {
       type:DataTypes.INTEGER,
-      references:{
-        model:'thread',
-        key:'id'
+      references: {
+        model: 'thread',
+        key: 'id'
       }
     }
   },

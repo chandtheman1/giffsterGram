@@ -4,38 +4,38 @@ const sequelize = require('../config/connection');
 class Gif extends Model {}
 
 Gif.init({
-    id:{
+    id: {
         type: DataTypes.INTEGER,
-        allowNull:false,
-        primaryKey:true,
-        autoIncrement:true
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
       },
-      tag_id:{
+      tag_id: {
         type: DataTypes.INTEGER,
-        references:{
-          model:'tag',
-          key:'id'
+        references: {
+          model: 'tag',
+          key: 'id'
         }
       },
-      image:{
-          type: DataTypes.BLOB,
-         allowNull:false, 
+      image: {
+        type: DataTypes.BLOB,
+        allowNull: false, 
       },
       like: {
         type: DataTypes.INTEGER,
-        allowNull:true, 
+        allowNull: true, 
       },
-      dislike : {
+      dislike: {
         type: DataTypes.INTEGER,
-        allowNull:true, 
+        allowNull: true, 
       }
 },
     {
-        sequelize,
-        timestamps: false,
-        freezeTableName: true,
-        underscored: true,
-        modelName: 'gif',
+      sequelize,
+      timestamps: false,
+      freezeTableName: true,
+      underscored: true,
+      modelName: 'gif',
   },
 );
 
