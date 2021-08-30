@@ -12,11 +12,11 @@ User.belongsToMany(Thread,{
   foreignKey:'group_id'
 });
 
-Gifs.hasMany(Tag,{
+Gif.hasMany(Tag,{
   foreignKey:'tag_id',
 });
 
-Tag.belongsToMany(Gifs,{
+Tag.belongsToMany(Gif,{
   foreignKey:'tag_id',
 });
 

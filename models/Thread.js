@@ -1,6 +1,7 @@
 const  { Model, DataTypes } =require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+
+class Thread extends Model {}
 
 Thread.init({
     id: {
@@ -13,30 +14,27 @@ Thread.init({
         type: DataTypes.STRING,
         allowNulls:false,
         validate :{
-            len:[2, 10],
+            len:[2, 20],
         }
-
     },
     user_id: {
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         references: {
             model:'user',
             key:'id'
         }
     },
     public_visibility: {
-        type:DataTypes.BOOLEAN,
-        allowNulls:false
+        type: DataTypes.BOOLEAN,
+        allowNulls: false
     },
-
     thread_admin: {
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         references: {
             model:'user',
             key:'id'
         }
     }
-    
 },
 {
     sequelize,
