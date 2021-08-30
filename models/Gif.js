@@ -1,7 +1,5 @@
-const  { Model, DataTypes } =require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-
-class Gif extends Model {}
 
 class Gif extends Model {}
 
@@ -39,7 +37,6 @@ Gif.init({
         underscored: true,
         modelName: 'gif',
   },
-
 );
 
 module.exports = Gif;    

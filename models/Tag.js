@@ -1,4 +1,4 @@
-const  { Model, DataTypes } =require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Tag extends Model {}
@@ -26,5 +26,5 @@ Tag.init({
         modelName: 'tag',
       }
 );
-    
-    module.exports = Tag;
+ 
+module.exports = Tag;
