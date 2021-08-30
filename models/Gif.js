@@ -24,11 +24,11 @@ Gif.init({
          allowNull:false, 
       },
       like: {
-        type:DataTypes.BOOLEAN,
+        type:DataTypes.INTEGER,
         allowNull:true, 
       },
       dislike : {
-        type:DataTypes.BOOLEAN,
+        type:DataTypes.INTEGER,
         allowNull:true, 
       }
 },

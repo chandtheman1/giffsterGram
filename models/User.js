@@ -38,7 +38,7 @@ User.init (
         group_id: {
             type: DataTypes.INTEGER,
             references: {
-                model:'group',
+                model:'thread',
                 key:'id'
             }
         }
