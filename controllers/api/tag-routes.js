@@ -4,13 +4,16 @@ const { Tag } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
 router.post("/", withAuth, (req, res) => {
-    Tag.create({ ...req.body, userId: req.session.userId })
-    .then(newGif => {
-      res.json(newGif);
-    })
-    .catch(err => {
-      res.status(500).json(err);
-    });
+  Tag.create({ 
+    ...req.body,
+      userId: req.session.userId
+  })
+  .then(newTag => {
+    res.json(newTag);
+  })
+  .catch(err => {
+    res.status(500).json(err);
+  });
 });
 
 
@@ -30,14 +33,38 @@ router.get("/", withAuth, async(req, res) => {
 router.get("/:id", withAuth, async(req, res) => {
     try{
       const tagData = await Tag.findByPk(req.params.id);
-      if(tagData){
-        const tag = tagData.get({ plain: true });
-        res.status(200).json(tag);
+     if(!tagData){
+        res.status(404).json({ message : 'No tag exists with id!'});
+        return;
       }
+      const tag= tagData.get({ plain: true });
+      res.status(200).json(tag);
     }
     catch(err){
       res.status(500).json(err);
     }
+});
+
+
+router.put('/:id', withAuth, async(req, res) => {
+
+  try{
+    const tag = await Tag.update((req.body),{
+      where : {
+        id: req.params.id,
+      },
+      // individualHooks: true,
+    });
+    if(!tag[0]){
+      res.status(404).json({ message : 'No Tag exists with id!'});
+      return;
+    }
+    res.status(200).json(tag);
+
+  }
+  catch(err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete("/:id", withAuth, async(req, res) => {
@@ -48,9 +75,9 @@ router.delete("/:id", withAuth, async(req, res) => {
         }
       });
       if (affectedRows > 0) {
-        res.status(200).end();
+        res.status(200).json(affectedRows);
       } else {
-        res.status(404).end();
+        res.status(404).json({message:"tag not deleted !"});
       }
     }
     catch(err){

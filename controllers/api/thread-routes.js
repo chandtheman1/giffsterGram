@@ -17,7 +17,7 @@ router.post("/", withAuth, (req, res) => {
 router.get("/", withAuth, async(req, res) => {
     try{
       const threadData = await Thread.findAll();
-      if(tagData){
+      if(threadData){
         const threads = threadData.map((project) => project.get({ plain: true }));
         res.status(200).json(threads);
       }
@@ -30,14 +30,37 @@ router.get("/", withAuth, async(req, res) => {
 router.get("/:id", withAuth, async(req, res) => {
     try{
       const threadData = await Thread.findByPk(req.params.id);
-      if(tagData){
-        const threads = threadData.get({ plain: true });
-        res.status(200).json(threads);
+      if(!threadData){
+        res.status(404).json({ message : 'No thread exists with id!'});
+        return;
       }
+      const thread= threadData.get({ plain: true });
+      res.status(200).json(thread);
     }
     catch(err){
       res.status(500).json(err);
     }
+});
+
+router.put('/:id', withAuth, async(req, res) => {
+
+  try{
+    const thread = await Thread.update((req.body),{
+      where : {
+        id: req.params.id,
+      },
+      // individualHooks: true,
+    });
+    if(!thread[0]){
+      res.status(404).json({ message : 'No Thread exists with id!'});
+      return;
+    }
+    res.status(200).json(thread);
+
+  }
+  catch(err) {
+    res.status(500).json(err);
+  }
 });
 
 router.delete("/:id", withAuth, async(req, res) => {
@@ -48,9 +71,9 @@ router.delete("/:id", withAuth, async(req, res) => {
         }
       });
       if (affectedRows > 0) {
-        res.status(200).end();
+        res.status(200).json(affectedRows);
       } else {
-        res.status(404).end();
+        res.status(404).json({message:"Thread not deleted !"});
       }
     }
     catch(err){
