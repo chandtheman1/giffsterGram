@@ -20,7 +20,7 @@ Thread.belongsToMany(User,{
 Tag.belongsToMany(Gif, {
   through: TagHandler,
   foreignKey: 'gif_id',
-});
+})
 
 Gif.belongsToMany(Tag, {
   through: TagHandler,
