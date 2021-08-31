@@ -1,25 +1,21 @@
-const { Thread } = require('../models/Thread');
+const { Thread } = require('../models');
 
-const threadData =[
-    {
-      "name" :"WorkGroup",
-      "public_visibility" : false,
-      "thread_admin":1
-    },
-    {
-        "name" :"friendsGroup",
-        "public_visibility" : false,
-        "thread_admin":1
-    },
-    {
-        "name" :"friendsGroup",
-        "public_visibility" : false,
-        "thread_admin":1
-    }
-  ];
+const threadData = [
+  {
+    "name": "WorkGroup",
+    "public_visibility": false,
+  },
+  {
+    "name": "friendsGroup",
+    "public_visibility": false,
+  },
+  {
+    "name": "friendsGroupdsafgasd",
+    "public_visibility" : false,
+  }
+];
 
-
-  const seedThreads = () => Thread.bulkCreate(threadData);
+const seedThreads = () => Thread.bulkCreate(threadData);
 
 module.exports = seedThreads;
 
