@@ -1,34 +1,32 @@
-const  { Model, DataTypes } =require('sequelize');
-const bcrypt = require('bcrypt');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const { Gifs } = require('.');
 
 class Gif extends Model {}
 
 Gif.init({
     id:{
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull:false,
         primaryKey:true,
         autoIncrement:true
       },
       tag_id:{
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         references:{
           model:'tag',
           key:'id'
         }
       },
       image:{
-          type:DataTypes.BLOB,
+          type: DataTypes.BLOB,
          allowNull:false, 
       },
       like: {
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull:true, 
       },
       dislike : {
-        type:DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull:true, 
       }
 },
@@ -39,9 +37,6 @@ Gif.init({
         underscored: true,
         modelName: 'gif',
   },
-
 );
 
-
-module.exports = Gif;
-    
+module.exports = Gif;    
