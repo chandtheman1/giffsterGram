@@ -28,6 +28,13 @@ Thread.init({
             key: 'id'
         }
     },
+    members: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
+    }
 },
     {
         sequelize,

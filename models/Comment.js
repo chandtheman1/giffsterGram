@@ -10,7 +10,7 @@ Comment.init({
         primaryKey: true,
         autoIncrement: true
     },
-    content:{
+    content: {
         type: DataTypes.STRING,
         allowNull: false
     },
@@ -21,6 +21,11 @@ Comment.init({
             key: 'id'
         }
     },
+    date_created: {
+        type: DataTypes.DATE,
+        allowNull: false,
+        defaultValue: sequelize.fn('NOW')
+    }
 },
     {
         sequelize,

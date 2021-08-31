@@ -35,14 +35,6 @@ User.init (
                 isEmail: true,
             },          
         },
-        group_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'thread',
-                key: 'id'
-            }
-        }
-
     },
     {   hooks: {
         beforeCreate: async (newUserData) =>{

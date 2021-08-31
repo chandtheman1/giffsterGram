@@ -5,6 +5,7 @@ const Thread = require('./Thread');
 const Tag = require('./Tag');
 const Comment = require ('./Comment');
 const UserThread = require('./UserThread');
+const TagHandler = require('./TagHandler');
 
 User.belongsToMany(Thread, {
   through: UserThread,
@@ -14,21 +15,19 @@ User.belongsToMany(Thread, {
 Thread.belongsToMany(User,{
   through: UserThread,
   foreignKey: 'thread_id'
-})
-
-Gif.hasMany(Tag,{
-  foreignKey: 'tag_id',
 });
 
-Tag.belongsToMany(Gif,{
-  foreignKey: 'tag_id',
+Tag.belongsToMany(Gif, {
+  through: TagHandler,
+  foreignKey: 'gif_id',
 });
 
-Thread.hasOne(Comment,{
-  foreignKey: 'thread_id',
+Gif.belongsToMany(Tag, {
+  through: TagHandler,
+  foreignKey:'tag_id',
 });
 
-Comment.belongsTo(Thread,{
+Comment.belongsTo(Thread, {
   foreignKey: 'thread_id',
 })
 

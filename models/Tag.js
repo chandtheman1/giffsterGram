@@ -17,6 +17,13 @@ Tag.init({
             len:[2, 10],
         }
     },
+    gif_id: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'gif',
+          key: 'id'
+        }
+      },
 },
     {
         sequelize,
