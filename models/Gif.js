@@ -10,22 +10,15 @@ Gif.init({
         primaryKey: true,
         autoIncrement: true
       },
-      tag_id: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: 'tag',
-          key: 'id'
-        }
-      },
-      image: {
-        type: DataTypes.BLOB,
+    path: {
+        type: DataTypes.STRING,
         allowNull: false, 
       },
-      like: {
+    like: {
         type: DataTypes.INTEGER,
         allowNull: true, 
       },
-      dislike: {
+    dislike: {
         type: DataTypes.INTEGER,
         allowNull: true, 
       }
