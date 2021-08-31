@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-// const routes = require('./routes');
+const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
@@ -34,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// app.use(routes);
+app.use(routes);
 
 
 
@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
   res.render('homepage')
 });
 
-app.get('/controllers/api/addTextToGif', (req, res) => {
+app.post('/controllers/api/addTextToGif', (req, res) => {
   res.send(addTextToGIF())
 });
 
