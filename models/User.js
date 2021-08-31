@@ -12,34 +12,34 @@ User.init (
     {
         id: {
             type: DataTypes.INTEGER,
-            allowNull:false,
+            allowNull: false,
             primaryKey : true,
-            autoIncrement:true,            
+            autoIncrement: true,            
         },
         username: {
             type: DataTypes.STRING,
-            allowNull:false,
+            allowNull: false,
         },
         password: {
             type: DataTypes.STRING,
-            allowNull :false,
-            validate :{
+            allowNull : false,
+            validate : {
                 len:[8,15],
             }
         },
         email: {
             type: DataTypes.STRING,
-            allowNull:false,
-            unique : true,
-            validate : {
-                isEmail :true,
+            allowNull: false,
+            unique: true,
+            validate: {
+                isEmail: true,
             },          
         },
         group_id: {
             type: DataTypes.INTEGER,
             references: {
-                model:'thread',
-                key:'id'
+                model: 'thread',
+                key: 'id'
             }
         }
 
@@ -54,7 +54,7 @@ User.init (
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName :'user',
+        modelName: 'user',
     }
 );
 
