@@ -1,11 +1,12 @@
+
 const router = require("express").Router();
-const { Tag } = require("../../models/");
+const { Thread } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
 router.post("/", withAuth, (req, res) => {
-    Tag.create({ ...req.body, userId: req.session.userId })
-    .then(newGif => {
-      res.json(newGif);
+    Thread.create({ ...req.body, userId: req.session.userId })
+    .then(newThread => {
+      res.json(newThread);
     })
     .catch(err => {
       res.status(500).json(err);
@@ -15,10 +16,10 @@ router.post("/", withAuth, (req, res) => {
 
 router.get("/", withAuth, async(req, res) => {
     try{
-      const tagData = await Tag.findAll();
+      const threadData = await Thread.findAll();
       if(tagData){
-        const tags = tagData.map((project) => project.get({ plain: true }));
-        res.status(200).json(tags);
+        const threads = threadData.map((project) => project.get({ plain: true }));
+        res.status(200).json(threads);
       }
     }
     catch(err){
@@ -28,10 +29,10 @@ router.get("/", withAuth, async(req, res) => {
   
 router.get("/:id", withAuth, async(req, res) => {
     try{
-      const tagData = await Tag.findByPk(req.params.id);
+      const threadData = await Thread.findByPk(req.params.id);
       if(tagData){
-        const tag = tagData.get({ plain: true });
-        res.status(200).json(tag);
+        const threads = threadData.get({ plain: true });
+        res.status(200).json(threads);
       }
     }
     catch(err){
@@ -41,7 +42,7 @@ router.get("/:id", withAuth, async(req, res) => {
 
 router.delete("/:id", withAuth, async(req, res) => {
     try{
-      const affectedRows = await Tag.destroy({
+      const affectedRows = await Thread.destroy({
         where: {
           id: req.params.id
         }
@@ -57,5 +58,5 @@ router.delete("/:id", withAuth, async(req, res) => {
     }
 });
 
-module.exports = router;
 
+module.exports = router;
