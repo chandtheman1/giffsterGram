@@ -1,35 +1,28 @@
-const { Tag } = require('../models/Tag');
+const { Model, DataTypes } = require('sequelize');
+const { Tag } = require('../models');
 
-const tagData =[
+const tagData = [
     {
-      "name" :"fun",
-      "isPublic": true,
-      "admin" : 1,
+      "name": "fun",
     },
     {
-        "name" :"work",
-        "isPublic": false,
-        "admin" : 2,
+      "name": "sad",
     },
     {
-        "name" :"family",
-        "isPublic": false,
-        "admin" : 2,
+      "name": "laugh",
     },
     {
-        "name" :"personal",
-        "isPublic": false,
-        "admin" : 1,
+      "name": "parksandrec",
     },
     {
-        "name" :"friends",
-        "isPublic": true,
-        "admin" : 1,
-    }
-  ];
+      "name": "lmao",
+    },
+    {
+      "name": "lol",
+    },
+];
 
-
-  const seedTags = () => Tag.bulkCreate(tagData);
+const seedTags = () => Tag.bulkCreate(tagData);
 
 module.exports = seedTags;
 

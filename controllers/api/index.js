@@ -6,6 +6,7 @@ const threadRoutes = require('./thread-routes.js');
 const userRoutes = require('./user-routes.js');
 const imageProcessing = require('./imageProcessing');
 const gifPathStorage = require('./gifRoutes');
+const tagRoutes = require('./tagRoutes');
 
 router.use('/gif', gifRoutes);
 router.use('/comment', commentRoutes);
@@ -13,6 +14,7 @@ router.use('/tag', tagRoutes);
 router.use('/thread', threadRoutes);
 router.use('/user', userRoutes);
 router.use('/image', imageProcessing);
-router.use('/image', gifPathStorage);
+router.use('/gif', gifPathStorage);
+router.use('/tag', tagRoutes);
 
 module.exports = router;
