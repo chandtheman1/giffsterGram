@@ -6,14 +6,14 @@ class Thread extends Model {}
 Thread.init({
     id: {
         type: DataTypes.INTEGER,
-        allowNulls:false,
+        allowNulls: false,
         primaryKey: true,
-        autoIncrement:true
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING,
-        allowNulls:false,
-        validate :{
+        allowNulls: false,
+        validate : {
             len:[2, 20],
         }
     },
@@ -24,18 +24,18 @@ Thread.init({
     thread_admin: {
         type: DataTypes.INTEGER,
         references: {
-            model:'user',
-            key:'id'
+            model: 'user',
+            key: 'id'
         }
     },
 },
-{
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'thread',
-  }
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'thread',
+    }
 );
 
 module.exports = Thread;

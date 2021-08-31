@@ -6,13 +6,13 @@ class Tag extends Model {}
 Tag.init({
     id: {
         type: DataTypes.INTEGER,
-        allowNulls:false,
+        allowNulls: false,
         primaryKey: true,
-        autoIncrement:true
+        autoIncrement: true
     },
     name: {
         type: DataTypes.STRING,
-        allowNulls:false,
+        allowNulls: false,
         validate :{
             len:[2, 10],
         }
@@ -24,7 +24,7 @@ Tag.init({
         freezeTableName: true,
         underscored: true,
         modelName: 'tag',
-      }
+    }
 );
  
 module.exports = Tag;

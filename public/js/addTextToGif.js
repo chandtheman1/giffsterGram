@@ -6,7 +6,8 @@ const gifHandler = async (event) => {
     const sourceText = document.querySelector('#sourceText').value.trim();
     const sourceName = document.querySelector('#sourceName').value.trim();
   
-    console.log(`Name: ${sourceName}, URL: ${sourceGif}, Text: ${sourceText}`);
+    console.log(`Name: ${sourceName}, \nURL: ${sourceGif}, \nText: ${sourceText}`);
+
     // Test user has provided an email and a password
     if (sourceGif && sourceText && sourceName) {
       // Call the login route with the userdata
