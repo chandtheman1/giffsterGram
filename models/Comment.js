@@ -10,14 +10,14 @@ Comment.init({
         primaryKey: true,
         autoIncrement: true
     },
-    content: {
+    comment_text: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    thread_id: {
+    author: {
         type: DataTypes.INTEGER,
         references: {
-            model: 'thread',
+            model: 'user',
             key: 'id'
         }
     },
@@ -25,6 +25,13 @@ Comment.init({
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: sequelize.fn('NOW')
+    },
+    gif_id:{
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'gif',
+            key: 'id'
+        }
     }
 },
     {
@@ -32,7 +39,7 @@ Comment.init({
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'Comment',
+        modelName: 'comment',
     });
 
 module.exports = Comment;
