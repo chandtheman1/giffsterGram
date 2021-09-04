@@ -10,8 +10,13 @@ Gif.init({
         primaryKey: true,
         autoIncrement: true
       },
-    path: {
+    name: {
         type: DataTypes.STRING,
+        allowNull:false
+
+      },
+    imageData: {
+        type: DataTypes.BLOB('long'),
         allowNull: false, 
       },
     like: {
@@ -21,6 +26,13 @@ Gif.init({
     dislike: {
         type: DataTypes.INTEGER,
         allowNull: true, 
+      },
+      author: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'user',
+            key: 'id'
+        }
       }
 },
     {

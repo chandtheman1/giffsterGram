@@ -1,40 +1,40 @@
 const router = require('express').Router();
-const { Thread, Tag,Gif,Comment,User} = require('../models/');
-const withAuth = require("../../utils/auth");
+const {  Gif,Comment,User} = require('../models/');
+const withAuth = require("../utils/auth");
 
-router.get('/user-thread',withAuth,async(req,res)=>{
+// router.get('/user-thread',withAuth,async(req,res)=>{
 
-    try{
-        const threadsData = await Thread.findAll({
-            include:[User]
-        });
+//     try{
+//         const threadsData = await Thread.findAll({
+//             include:[User]
+//         });
 
-        const threads = threadsData.map((thread)=> thread.get({plain: true}));
-        res.json(threads);
-        // res.render("all-threads",{ threads});
-    }
-    catch(err){
-        res.status(500).json(err);
-    };
+//         const threads = threadsData.map((thread)=> thread.get({plain: true}));
+//         res.json(threads);
+//         // res.render("all-threads",{ threads});
+//     }
+//     catch(err){
+//         res.status(500).json(err);
+//     };
 
-});
+// });
 
-router.get('/user-thread/:threadId',withAuth,async(req,res)=>{
+// router.get('/user-thread/:threadId',withAuth,async(req,res)=>{
 
-    try{
-        const threadsData = await Thread.findByPk(req.params.threadId,{
-            include:[User]
-        });
+//     try{
+//         const threadsData = await Thread.findByPk(req.params.threadId,{
+//             include:[User]
+//         });
 
-        const threads = threadsData.get({plain: true});
-        res.json(threads);
-        // res.render("all-threads",{ threads});
-    }
-    catch(err){
-        res.status(500).json(err);
-    };
+//         const threads = threadsData.get({plain: true});
+//         res.json(threads);
+//         // res.render("all-threads",{ threads});
+//     }
+//     catch(err){
+//         res.status(500).json(err);
+//     };
 
-});
+// });
 
 router.get("/login", (req, res) => {
     if (req.session.loggedIn) {

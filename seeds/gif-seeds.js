@@ -2,24 +2,36 @@ const { Gif } = require('../models');
 
 const gifData = [
     {
-      "path" :"/output/asdjkldasgjkbn.gif",
+      "imageData" :"/output/asdjkldasgjkbn.gif",
       "like" : 1,
-      "dislike": 8882
+      "dislike": 8882,
+      "name" : "testing1",
+      // "comment_id" :1,
+      "author":1
     },
     {
-      "path" :"/output/dfshdsfh.gif",
+      "imageData" :"/output/dfshdsfh.gif",
       "like" : 1,
-      "dislike": 552
+      "dislike": 552,
+      "name" : "testing2",
+      // "comment_id":2,
+      "author" :1
     },
     {
-      "path" :"/output/dsfddddddd.gif",
+      "imageData" :"/output/dsfddddddd.gif",
       "like" : 1,
-      "dislike": 12
+      "dislike": 12,
+      "name" : "testing3",
+      // "comment_id":1,
+      "author" :1
     },
     {
-      "path" :"/output/awertterwertw.gif",
+      "imageData" :"/output/awertterwertw.gif",
       "like" : 1,
-      "dislike": 3
+      "dislike": 3,
+      "name" : "testing4",
+      // "comment_id":1,
+      "author" :1
     },
 ];
 
