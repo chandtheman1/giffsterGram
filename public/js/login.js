@@ -16,7 +16,23 @@ const loginFormHandler = async function(event) {
       })
       .catch(err => console.log(err));
   };
-  
+
+// When user clicks signup redirect to the signup options
+const signUpRedirect = async function(event) {
+  event.preventDefault();
+
+  fetch("/api/user/signup", {
+    method: "GET"
+  })
+  .then(document.location.replace("/api/user/signup"));
+};
+
+  // Event Listener for login FORM submission
   document
     .querySelector("#login-form")
     .addEventListener("submit", loginFormHandler);
+
+  // Event Listener for signup button
+  document
+    .querySelector("#signup-btn")
+    .addEventListener("click", signUpRedirect);
