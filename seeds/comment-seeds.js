@@ -13,7 +13,7 @@ const commentData = [
     },
     {
         "comment_text": "cool!",
-        "author":2,
+        "author":1,
         "gif_id":1
     },
     {

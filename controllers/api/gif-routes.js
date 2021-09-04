@@ -5,7 +5,7 @@ const withAuth = require("../../utils/auth");
 router.post("/", withAuth, (req, res) => {
   Gif.create({ 
     ...req.body,
-      userId: req.session.userId
+      author: req.session.userId
   })
   .then(newGif => {
     res.json(newGif);
