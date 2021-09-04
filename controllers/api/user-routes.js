@@ -1,5 +1,17 @@
 const router = require("express").Router();
 const { User } = require("../../models");
+const { route } = require("./gif-routes");
+
+// Redirect route for user clicking sign up button on login screen
+router.get('/signup', (req, res) => {
+  try {
+    console.log('server');
+    res.status(200).render('signup');
+  } catch (error) {
+    res.status(500).json(error);
+  }
+  
+});
 
 router.post("/", (req, res) => {
   User.create({

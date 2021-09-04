@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row align-items-start">
+    
+        <!-- Left 50% - Login/Signup -->
+        <div class="col-6 align-self-center">
+            <nav>
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-center"><img src="/images/Logo.png" width="auto" height="200" id="logo"></div>
+
+                        <div class="d-flex justify-content-center mt-5">
+                            <!-- Login Button - Autofocussed -->
+                            <input type="radio" class="btn-check" name="options" id="login-btn" autocomplete="off" checked autofocus>
+                            <label class="btn btn-outline-secondary" for="login-btn">Login</label>
+                            <!-- SignUp Button - Prompts Redirect -->
+                            <input type="radio" class="btn-check" name="options" id="signup-btn" autocomplete="off">
+                            <label class="btn btn-outline-secondary" for="signup-btn">Sign Up</label>
+                        </div>
+
+                    {{>loginoptions}}
+
+                </div>
+            </nav>
+        </div>
+
+        <!-- Right 50% - Image -->
+        <div class="col-6">
+            <img src="/images/hatch.gif" width="auto" id="loginHatch">
+        </div>
+    
+    </div>
+</div>
+
+<!-- Import client side script from public-->
+<script src="/js/login.js"></script>
