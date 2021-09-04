@@ -41,7 +41,7 @@ app.use(routes); // !!DONT MOVE ME!! I break the bodyparsing if I go before the 
 
 
 app.get('/', (req, res) => {
-  res.render('login')
+  res.render('commentPage')
 });
 
 // sync sequelize models to the database, then turn on the server

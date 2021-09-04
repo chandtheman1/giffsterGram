@@ -1,0 +1,66 @@
+<div class="container-fluid px-0">
+    <div class="row align-items-start">
+    
+        <!-- Left 25% - Login/Signup -->
+        <div class="col-3 align-self-start mt-2">
+            <div class="d-flex d-none d-lg-block"><img src="/images/LogoCropped.png" width="auto" height="200" id="logo"></div>
+        </div>
+
+        <!-- Centre 50% - Image -->
+        <div class="col-6">
+            <!-- GIF Preview DIV - ROW 1 -->
+            <div class="row mx-auto mt-5">
+                
+                <!-- DB loaded GIF -->
+                <div class="container-fluid d-flex">
+
+                        <img id="gifDisplayed" class="rounded d-block" src="https://picsum.photos/700/500"> <!-- src={{imageData}} -->
+
+                        <!-- Up/Down vote buttons-->
+                        <div class="btn-group-vertical d-flex align-items-end">
+                            <button type="button" class="btn btn-outline-success" id="upvote-btn">/\</button>
+                            <button type="button" class="btn btn-outline-danger" id="downvote-btn">\/</button>
+                        </div>
+
+
+                </div>
+
+            </div>
+            <!-- Comments DIV - Row 2 -->
+            <div class="row align-items-start mt-1">
+
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container-float">
+                      <h1 class="display-6">Comments</h1>
+                            <!-- Comment INPUT Field-->
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Add a comment..." aria-label="Comment">
+                                <div class="input-group-append">
+                                  <button class="btn btn-outline-success" type="button">Submit</button>
+                                </div>
+                            </div>
+                            <!-- Comments loaded from DB -->
+                            <div class="rounded mx-auto d-block">
+                                {{#each comments}} <!-- Passing in by the server as ____ -->
+                                  {{> comments}} <!-- calls the comments partial -->
+                                {{/each}}
+                            </div>
+                    </div>
+                </div> <!-- Jumbotron DIV -->
+            </div> <!-- Row 2 DIV -->
+        </div> <!-- Column Width DIV -->
+
+        <!-- Right 25% - ??? -->
+        <div class="col-3 d-flex justify-content-end">
+            <div class="m-2">
+                <!-- Logout Button - Prompts Redirect -->
+                <input type="button" class="btn-check" name="logout" id="logout-link" autocomplete="off">
+                <label class="btn btn-outline-danger" for="logout-link">Logout</label>
+            </div>
+        </div>
+    
+    </div>
+</div>
+
+<!-- Load front end script from /Public -->
+<script src="/js/logout.js"></script>
