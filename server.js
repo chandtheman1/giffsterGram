@@ -22,6 +22,7 @@ const sess = {
   resave: false,
   saveUninitialized: true,
   // cookie: { secure: true }
+  cookie:{},
 };
 
 app.use(session(sess));
@@ -40,9 +41,9 @@ app.use(routes); // !!DONT MOVE ME!! I break the bodyparsing if I go before the 
 
 
 
-app.get('/', (req, res) => {
-  res.render('homepage')
-});
+// app.get('/', (req, res) => {
+//   res.render('homepage')
+// });
 
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {

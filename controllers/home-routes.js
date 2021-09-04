@@ -2,15 +2,13 @@ const router = require('express').Router();
 const {  Gif,Comment,User} = require('../models/');
 const withAuth = require("../utils/auth");
 
-// get all comments for logged in user
-
 // create commnets  with a gifId---working!!--localhost:3001/home/comment/2 
 router.post("/comment/:gifId",  (req, res) => {
 
   const gifId =parseInt(req.params.gifId);
   Comment.create({ 
     ...req.body, 
-    // author: req.session.userId ,
+    author: req.session.userId ,
     gif_id: gifId
   })
   .then(newComment => {
@@ -22,12 +20,12 @@ router.post("/comment/:gifId",  (req, res) => {
 });
 
 
-// get all comments of  gifs for logged in user
+// get all comments of  gifs for logged in user localhost:3001/home/comment/2 
 router.get('/comments/:gifId',(req,res)=>{
   const gifId =parseInt(req.params.gifId);
   Comment.findAll({
     where: {
-      // author: req.session.userId ,
+      author: req.session.userId ,
       gif_id: gifId
     }
   })
@@ -35,8 +33,8 @@ router.get('/comments/:gifId',(req,res)=>{
       const comments = dbcommentData.map((comment) => comment.get({ plain: true }));
       // console.log(comments)
       if(comments.length > 0){
-        res.status(200).json(comments);
-        //res.render("all-gifs", { gifs });
+       // res.status(200).json(comments);   //uncomment for testing
+        res.render("all-gifComments", { comments });
       } else {
         res.status(404).json({message:"No comments found!!"});
       }
@@ -47,6 +45,32 @@ router.get('/comments/:gifId',(req,res)=>{
     });
 
 });
+
+// get all  gifs for logged in user
+router.get('/allGifs',(req,res)=>{
+  
+  Gif.findAll({
+    where: {
+      author: req.session.userId ,
+    }
+  })
+    .then((dbgifData) => {
+      const gifs = dbgifData.map((gif) => gif.get({ plain: true }));
+      // console.log(comments)
+      if(gifs.length > 0){
+       // res.status(200).json(gifs);
+        res.render("all-gifs", { gifs });
+      } else {
+        res.status(404).json({message:"No Gifs found!!"});
+      }
+      
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+
+});
+
 
 
 router.get("/login", (req, res) => {
