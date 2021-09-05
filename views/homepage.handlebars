@@ -1,11 +1,15 @@
-<h1>HOMEPAGE</h1>
-
-{{#each gifs as |gif|}}
-<div>
-    <a href="/api/gif/1"> 
-    {{!-- needs to be fixed --}}
-        <img src="data:image/gif;base64,{{gif}}" alt="Alt text" />
-    </a>
+<div class="d-flex justify-content-center">
+    <div class="row d-flex d-none d-lg-block my-5"><img src="/images/LogoCropped.png" width="auto" height="200" id="logo"></div>
 </div>
 
-{{/each}}
+    {{#each gifs as |gif|}}
+    <div class="d-flex justify-content-center">
+        <div class="row mt-1 align-self-center">
+            <a href="/api/gif/{{id}}"> 
+            {{!-- needs to be fixed --}}
+                <img src="data:image/gif;base64,{{gif}}" alt="Alt text" />
+            </a>
+        </div>
+    </div>
+    {{/each}}
+
