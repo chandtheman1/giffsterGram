@@ -1,6 +1,12 @@
+/* Login / Signup Handlebars */
 #loginHatch {
     min-height: 100vh;
 
     height: 100%;
     overflow: hidden;
+}
+
+/* Comments Handlebar */
+#commentContainer {
+    width: 100%;
 }

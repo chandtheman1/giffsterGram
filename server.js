@@ -39,18 +39,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes); // !!DONT MOVE ME!! I break the bodyparsing if I go before the other app.use stuff
 
-
-
-
-// app.get('/', (req, res) => {
-//   res.render('homepage')
-// });
-
-//app.get('/', (req, res) => {
-//  res.render('login')
-//});
-
-
 // sync sequelize models to the database, then turn on the server
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));

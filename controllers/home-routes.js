@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {  Gif,Comment,User} = require('../models/');
+const { Gif, Comment, User } = require('../models/');
 const withAuth = require("../utils/auth");
 
 // ROUTE ./home
