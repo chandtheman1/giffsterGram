@@ -1,6 +1,14 @@
-<div class="d-flex justify-content-center">
-    <div class="row d-flex d-none d-lg-block my-5"><img src="/images/LogoCropped.png" width="auto" height="200" id="logo"></div>
-</div>
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-center"><img src="/images/Logo.png" width="auto" height="200" id="logo"></div>
+                    <div class="d-flex justify-content-center my-5">
+                        <!-- Login Button - Autofocussed -->
+                        <input type="radio" class="btn-check" name="options" id="login-btn" autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="login-btn">Login</label>
+                        <!-- SignUp Button - Prompts Redirect -->
+                        <input type="radio" class="btn-check" name="options" id="signup-btn" autocomplete="off">
+                        <label class="btn btn-outline-secondary" for="signup-btn">Sign Up</label>
+                    </div>
+                </div>
 
     {{#each gifs as |gif|}}
     <div class="d-flex justify-content-center">
@@ -13,3 +21,4 @@
     </div>
     {{/each}}
 
+<script src="/js/loginredirect.js"></script>
