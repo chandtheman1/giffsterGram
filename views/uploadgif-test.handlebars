@@ -1,7 +1,20 @@
+<div class="d-flex justify-content-center">
+    <div class="row d-flex d-none d-lg-block my-5"><img src="/images/LogoCropped.png" width="auto" height="200" id="logo"></div>
+</div>
+
+<div class="d-flex justify-content-center">
 <form class="upload-gif">
-    <input type="file">
-    <input type="text" name="name" id="gifName">
-    <button type="submit"> upload </button>
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Select GIF to upload:</label>
+      <input class="form-control" type="file" id="formFile">
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" name="name" id="gifName" class="form-control" placeholder="Name your gif..." aria-label="Name">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" type="submit">Submit</button>
+        </div>
+    </div>
 </form>
+</div>
 
 <script src="/js/upload.js"></script>
