@@ -55,7 +55,8 @@ router.get('/gifs', async (req, res) => {
 
   // const newGifData = gifData[0];
   res.render('homepage', {
-    gifs
+    gifs,
+    loggedIn:true
   });
   // res.json(newGifData);
 })
@@ -105,29 +106,29 @@ router.get('/comments/:gifId',(req,res)=>{
 });
 
 // get all  gifs for logged in user
-// router.get('/allGifs',(req,res)=>{
+router.get('/allGifs',(req,res)=>{
   
-//   Gif.findAll({
-//     where: {
-//       author: req.session.userId ,
-//     }
-//   })
-//     .then((dbgifData) => {
-//       const gifs = dbgifData.map((gif) => gif.get({ plain: true }));
-//       // console.log(comments)
-//       if(gifs.length > 0){
-//        // res.status(200).json(gifs);
-//         res.render("all-gifs", { gifs });
-//       } else {
-//         res.status(404).json({message:"No Gifs found!!"});
-//       }
+  Gif.findAll({
+    where: {
+      author: req.session.userId ,
+    }
+  })
+    .then((dbgifData) => {
+      const gifs = dbgifData.map((gif) => gif.get({ plain: true }));
+      // console.log(comments)
+      if(gifs.length > 0){
+       // res.status(200).json(gifs);
+        res.render("all-gifs", { gifs });
+      } else {
+        res.status(404).json({message:"No Gifs found!!"});
+      }
       
-//     })
-//     .catch((err) => {
-//       res.status(500).json(err);
-//     });
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
 
-// });
+});
 
 
 

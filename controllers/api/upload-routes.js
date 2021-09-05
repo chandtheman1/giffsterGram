@@ -13,7 +13,9 @@ const { GifUtil, GifCodec, BitmapImage, GifFrame } = require('gifwrap');
 // New Upload temp page
 router.get('/', (req, res) => {
   try {
-    res.status(200).render('uploadgif-test'); // <---- to be updated
+    res.status(200).render('uploadgif-test' , { 
+       loggedIn : true
+      }); // <---- to be updated
   } catch (error) {
     res.status(500).error(error);
   }
@@ -30,15 +32,18 @@ router.post('/uploadGif', upload.any(), async function (req, res) {
       name: req.body.name,
       imageData: req.files[0].buffer,
       // TO BE ADDED author: req.session.user_id 
+     
     });
-
+    
   res.json( { newGif });
   
 });
 
 //create Gif temp page
 router.get('/createGif', (req, res) => {
-  res.render('creategif-test');  // <-------- to be updated
+  res.render('creategif-test',{
+    loggedIn : true
+  });  // <-------- to be updated
 });
 
 

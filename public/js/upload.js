@@ -38,7 +38,7 @@ const uploadGifHandler = async (event) => {
     } else {
         alert("Needs to fill in both!");
     }
-    document.location.replace("/home");
+    document.location.replace("/gifs");
 }
 
 document
