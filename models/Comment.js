@@ -23,7 +23,6 @@ Comment.init({
     },
     date_created: {
         type: DataTypes.DATE,
-        allowNull: false,
         defaultValue: sequelize.fn('NOW')
     },
     gif_id:{

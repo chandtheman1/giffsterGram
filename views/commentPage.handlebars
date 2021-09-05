@@ -14,7 +14,7 @@
                 <!-- DB loaded GIF -->
                 <div class="container-fluid d-flex">
 
-                        <img id="gifDisplayed" class="rounded d-block" src="https://picsum.photos/700/500"> <!-- src={{imageData}} -->
+                        <img id="gifDisplayed" class="rounded d-block" src="data:image/gif;base64,{{gif}}"> <!-- src={{imageData}} -->
 
                         <!-- Up/Down vote buttons-->
                         <div class="btn-group-vertical d-flex align-items-end">
@@ -41,8 +41,9 @@
                             </div>
                             <!-- Comments loaded from DB -->
                             <div class="rounded mx-auto d-block">
-                                {{#each comments}} <!-- Passing in by the server as ____ -->
-                                  {{> comments}} <!-- calls the comments partial -->
+                                {{#each newGifData.comments as |comment|}} <!-- Passing in by the server as ____ -->
+                                  {{!-- {{> comments}} <!-- calls the comments partial --> --}}
+                                  <p>{{comment.comment_text}} - {{comment.user.username}}</p>
                                 {{/each}}
                             </div>
                     </div>

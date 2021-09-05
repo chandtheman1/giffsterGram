@@ -12,7 +12,11 @@ router.get('/:id', async (req, res) => {
     include: [
       {
         model: Comment,
-        attributes: ['comment_text', 'author']
+        attributes: ['comment_text', 'author'],
+        include: {
+          model: User,
+          attributes: ["username"]
+        }
       }
     ]
   });
@@ -21,7 +25,7 @@ router.get('/:id', async (req, res) => {
   const newGifData = gifData.get({plain: true});
   const gif = gifData.imageData.toString('base64');
 
-  res.render('gifthread-test', {
+  res.render('commentPage', {
     newGifData, gif
   });
 });
