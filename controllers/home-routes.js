@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Thread, Tag,Gif,Comment,User} = require('../models/');
-const withAuth = require("../../utils/auth");
+const withAuth = require("../utils/auth");
 
 router.get('/user-thread',withAuth,async(req,res)=>{
 
