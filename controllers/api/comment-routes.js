@@ -4,15 +4,27 @@ const router = require("express").Router();
 const { Comment,Gif } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
+// ROUTE ./api/comment
+
 //to create comment record 
-router.post("/", withAuth, (req, res) => {
-  Comment.create({ ...req.body, author: req.session.userId })
-  .then(newComment => {
-    res.json(newComment);
-  })
-  .catch(err => {
-    res.status(500).json(err);
+// router.post("/", withAuth, async (req, res) => {
+//   Comment.create({ ...req.body, author: req.session.userId })
+//   .then(newComment => {
+//     res.json(newComment);
+//   })
+//   .catch(err => {
+//     res.status(500).json(err);
+//   });
+// });
+
+router.post('/', async (req, res) => {
+  const newComment = await Comment.create({
+    comment_text: req.body.comment_text,
+    gif_id: req.body.gif_id,
+    author: req.session.user_id
   });
+
+  res.json(newComment);
 });
 
 
