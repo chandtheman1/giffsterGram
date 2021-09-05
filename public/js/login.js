@@ -1,20 +1,27 @@
-const loginFormHandler = function(event) {
+const loginFormHandler = async function(event) {
     event.preventDefault();
   
-    const usernameEl = document.querySelector("#username-input-login");
-    const passwordEl = document.querySelector("#password-input-login");
-    fetch("/api/user/login", {
+    const username = document.querySelector("#username-input-login").value.trim();
+    const password = document.querySelector("#password-input-login").value.trim();
+
+    if(username && password ){
+   
+    const response = await fetch("/api/user/login", {
       method: "POST",
       body: JSON.stringify({
-        username: usernameEl.value,
-        password: passwordEl.value
+        username: username,
+        password: password
       }),
       headers: { "Content-Type": "application/json" }
-    })
-      .then(function() {
-        document.location.replace("/gifs");  // <-------- Needs to be updated
-      })
-      .catch(err => console.log(err));
+    });
+    if (response.ok) {
+      // If successful, redirect the browser to the profile page
+      document.location.replace('/gifs');
+    } else {
+      alert(response.statusText);
+    }
+
+    }    
   };
 
 // When user clicks signup redirect to the signup options
