@@ -10,10 +10,10 @@
         <div class="col-6">
             <!-- GIF Preview DIV - ROW 1 -->
             <div class="row mx-auto mt-5">
-                
+                <h1 class="display-6">{{newGifData.name}}</h1>
                 <!-- DB loaded GIF -->
                 <div class="container-fluid d-flex">
-
+                        
                         <img id="gifDisplayed" class="rounded d-block" src="data:image/gif;base64,{{gif}}"> <!-- src={{imageData}} -->
 
                         <!-- Up/Down vote buttons-->
@@ -34,9 +34,9 @@
                       <h1 class="display-6">Comments</h1>
                             <!-- Comment INPUT Field-->
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" placeholder="Add a comment..." aria-label="Comment">
+                                <input type="text" class="form-control" placeholder="Add a comment..." aria-label="Comment" id="comment-text">
                                 <div class="input-group-append">
-                                  <button class="btn btn-outline-success" type="button">Submit</button>
+                                  <button class="btn btn-outline-success new-comment-form" type="button">Submit</button>
                                 </div>
                             </div>
                             <!-- Comments loaded from DB -->
@@ -65,3 +65,4 @@
 
 <!-- Load front end script from /Public -->
 <script src="/js/logout.js"></script>
+<script src="/js/comment.js"></script>
