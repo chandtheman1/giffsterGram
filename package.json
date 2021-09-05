@@ -26,6 +26,7 @@
     "express-session": "^1.17.2",
     "gifwrap": "^0.9.2",
     "jimp": "^0.16.1",
+    "multer": "^1.4.3",
     "mysql2": "^2.3.0",
     "nodemon": "^2.0.12",
     "sequelize": "^6.6.5"
