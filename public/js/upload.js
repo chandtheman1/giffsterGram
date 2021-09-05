@@ -33,17 +33,14 @@ const uploadGifHandler = async (event) => {
         if (file) {
             reader.readAsDataURL(file);
         }
-
+        
 
     } else {
         alert("Needs to fill in both!");
     }
+    document.location.replace("/home");
 }
 
 document
     .querySelector('.upload-gif')
     .addEventListener('submit', uploadGifHandler);
-
-
-
-
