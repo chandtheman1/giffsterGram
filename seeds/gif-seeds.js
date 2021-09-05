@@ -2,12 +2,11 @@ const { Gif } = require('../models');
 
 const gifData = [
     {
-      "imageData" :"/output/asdjkldasgjkbn.gif",
       "like" : 1,
-      "dislike": 8882,
+      "dislike": 5,
       "name" : "testing1",
-      // "comment_id" :1,
-      "author":1
+      "author": 1,
+      "imageData": "/output/dfshdsfh.gif",
     },
     {
       "imageData" :"/output/dfshdsfh.gif",
