@@ -1,9 +1,33 @@
-<form class="create-gif">
+{{!-- <form class="create-gif">
     <input type="file">
     <input type="text" name="name" id="textName">
     <button type="submit"> Insert Text to Gif and Download </button>
 </form>
 
-<button class="download">Download</button>
+<button class="download">Download</button> --}}
+
+<div class="d-flex justify-content-center">
+    <div class="row d-flex d-none d-lg-block my-5"><img src="/images/LogoCropped.png" width="auto" height="200" id="logo"></div>
+</div>
+
+<div class="d-flex justify-content-center">
+<form class="create-gif">
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Select GIF to upload:</label>
+      <input class="form-control" type="file" id="formFile">
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" name="name" id="textName" class="form-control" placeholder="Caption your gif..." aria-label="Name">
+        <div class="input-group-append">
+          <button class="btn btn-outline-success" type="submit">Submit</button>
+        </div>
+    </div>
+    <div id="fileHelp" class="form-text">After submitting download your GIF and submit it on the uploads page.</div>
+</form>
+</div>
+
+<div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-outline-info download my-2">Download</button>
+</div>
 
 <script src="/js/createGif.js"></script>
