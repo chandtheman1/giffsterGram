@@ -21,9 +21,9 @@
 {{#each gifs as |gif|}}
 <div class="d-flex justify-content-center">
     <div class="row mt-1 align-self-center">
-        <a href="/api/gif/{{id}}"> 
+        <a href="/api/gif/{{gif.id}}"> 
         {{!-- needs to be fixed --}}
-            <img src="data:image/gif;base64,{{gif}}" alt="Alt text" />
+            <img src="data:image/gif;base64,{{gif.imageData}}" alt="Alt text" />
         </a>
     </div>
 </div>
