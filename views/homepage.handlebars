@@ -1,24 +1,32 @@
-                <div class="container-fluid">
-                    <div class="d-flex justify-content-center"><img src="/images/Logo.png" width="auto" height="200" id="logo"></div>
-                    <div class="d-flex justify-content-center my-5">
-                        <!-- Login Button - Autofocussed -->
-                        <input type="radio" class="btn-check" name="options" id="login-btn" autocomplete="off">
-                        <label class="btn btn-outline-secondary" for="login-btn">Login</label>
-                        <!-- SignUp Button - Prompts Redirect -->
-                        <input type="radio" class="btn-check" name="options" id="signup-btn" autocomplete="off">
-                        <label class="btn btn-outline-secondary" for="signup-btn">Sign Up</label>
-                    </div>
-                </div>
-
-    {{#each gifs as |gif|}}
-    <div class="d-flex justify-content-center">
-        <div class="row mt-1 align-self-center">
-            <a href="/api/gif/{{id}}"> 
-            {{!-- needs to be fixed --}}
-                <img src="data:image/gif;base64,{{gif}}" alt="Alt text" />
-            </a>
-        </div>
+<div class="container-fluid">
+    <div class="d-flex justify-content-center my-5"><img src="/images/Logo.png" width="auto" height="200" id="logo"></div>
+    <div class="d-flex justify-content-center m-1">
+        <!-- Login Button - Autofocussed -->
+        <input type="radio" class="btn-check" name="options" id="login-btn" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="login-btn">Login</label>
+        <!-- SignUp Button - Prompts Redirect -->
+        <input type="radio" class="btn-check" name="options" id="signup-btn" autocomplete="off">
+        <label class="btn btn-outline-secondary" for="signup-btn">Sign Up</label>
     </div>
-    {{/each}}
+    <div class="d-flex justify-content-center m-1">
+        <!-- Upload Button - Prompts Redirect -->
+        <input type="radio" class="btn-check" name="options" id="upload-btn" autocomplete="off">
+        <label class="btn btn-outline-info" for="upload-btn">Upload</label>
+        <!-- Creation Button - Prompts Redirect -->
+        <input type="radio" class="btn-check" name="options" id="creation-btn" autocomplete="off">
+        <label class="btn btn-outline-info" for="creation-btn">Create</label>
+    </div>
+</div>
+
+{{#each gifs as |gif|}}
+<div class="d-flex justify-content-center">
+    <div class="row mt-1 align-self-center">
+        <a href="/api/gif/{{id}}"> 
+        {{!-- needs to be fixed --}}
+            <img src="data:image/gif;base64,{{gif}}" alt="Alt text" />
+        </a>
+    </div>
+</div>
+{{/each}}
 
 <script src="/js/loginredirect.js"></script>
