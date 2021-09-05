@@ -1,1 +1,11 @@
-content goes here
+<h1>HOMEPAGE</h1>
+
+{{#each gifs as |gif|}}
+<div>
+    <a href="/api/gif/1"> 
+    {{!-- needs to be fixed --}}
+        <img src="data:image/gif;base64,{{gif}}" alt="Alt text" />
+    </a>
+</div>
+
+{{/each}}

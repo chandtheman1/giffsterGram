@@ -8,10 +8,12 @@ const Jimp = require('jimp');
 const { GifUtil, GifCodec, BitmapImage, GifFrame } = require('gifwrap');
 
 
+// ROUTE ./api/upload
+
 // New Upload temp page
 router.get('/', (req, res) => {
   try {
-    res.status(200).render('uploadgif-test');
+    res.status(200).render('uploadgif-test'); // <---- to be updated
   } catch (error) {
     res.status(500).error(error);
   }
@@ -36,7 +38,7 @@ router.post('/uploadGif', upload.any(), async function (req, res) {
 
 //create Gif temp page
 router.get('/createGif', (req, res) => {
-  res.render('creategif-test');
+  res.render('creategif-test');  // <-------- to be updated
 });
 
 
