@@ -4,7 +4,7 @@ const withAuth = require("../../utils/auth");
 
 // ROUTE ./api/gif
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
   const gifData = await Gif.findOne({
     where: {
       id: req.params.id

@@ -49,16 +49,25 @@ router.get('/gifs', async (req, res) => {
   const gifData = await Gif.findAll();
 
   const gifs = gifData.map(gif => {
+    const newGif = {};
     const gifImage = gif.imageData.toString('base64')
-    return gif['imageData'] = gifImage
+    newGif['imageData'] = gifImage
+    newGif.id = gif.id;
+    return newGif;
   });
+
+  // const newGifData = gifData.map(gif => {
+  //   gif.get({plain: true});
+  // });
 
   // const newGifData = gifData[0];
   res.render('homepage', {
     gifs,
     loggedIn:true
   });
-  // res.json(newGifData);
+  
+  // res.json({gifData});
+  // res.json({gifs});
 })
 
 // create commnets  with a gifId---working!!--localhost:3001/home/comment/2 
