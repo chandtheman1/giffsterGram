@@ -1,11 +1,12 @@
 
 const router = require("express").Router();
-const { Comment } = require("../../models/");
+
+const { Comment,Gif } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
-
+//to create comment record 
 router.post("/", withAuth, (req, res) => {
-  Comment.create({ ...req.body, userId: req.session.userId })
+  Comment.create({ ...req.body, author: req.session.userId })
   .then(newComment => {
     res.json(newComment);
   })
@@ -15,6 +16,8 @@ router.post("/", withAuth, (req, res) => {
 });
 
 
+
+// to get all the comments if the user logged in for all tags---working --localhost:3001/api/comment/
 router.get("/", withAuth, async(req, res) => {
   try{
     const commentData = await Comment.findAll();
@@ -28,6 +31,7 @@ router.get("/", withAuth, async(req, res) => {
   }
 });
 
+// to get  a comment if the user logged in  by id---working --localhost:3001/api/comment/2
 router.get("/:id", withAuth, async(req, res) => {
   try{
     const commentData = await Comment.findByPk(req.params.id);
@@ -43,6 +47,8 @@ router.get("/:id", withAuth, async(req, res) => {
   }
 });
 
+
+
 router.put('/:id', withAuth, async(req, res) => {
 
 try{
@@ -50,7 +56,6 @@ try{
     where : {
       id: req.params.id,
     },
-    // individualHooks: true,
   });
   if(!comment[0]){
     res.status(404).json({ message : 'No comment exists with id!'});
@@ -63,6 +68,8 @@ catch(err) {
   res.status(500).json(err);
 }
 });
+
+
 
 router.delete("/:id", withAuth, async(req, res) => {
   try{

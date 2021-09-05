@@ -12,7 +12,7 @@ const signupFormHandler = async function(event) {
       headers: { "Content-Type": "application/json" }
     })
       .then(function() {
-        document.location.replace("/thread");
+        document.location.replace("/thread"); // <------ needs to be updated
       })
       .catch(err => console.log(err));
   };
@@ -21,10 +21,10 @@ const signupFormHandler = async function(event) {
 const loginRedirect = async function(event) {
   event.preventDefault();
 
-  fetch("/", {
+  fetch("/api/user/login", {
     method: "GET"
   })
-  .then(document.location.replace("/"));
+  .then(document.location.replace("/api/user/login"));
 };
 
 // Event Listener for Signup FORM submission

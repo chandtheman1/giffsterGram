@@ -1,40 +1,37 @@
 // import models
 const User = require('./User');
 const Gif = require('./Gif');
-const Thread = require('./Thread');
-const Tag = require('./Tag');
 const Comment = require ('./Comment');
-const UserThread = require('./UserThread');
-const TagHandler = require('./TagHandler');
 
-User.belongsToMany(Thread, {
-  through: UserThread,
-  foreignKey: 'user_id',
+User.hasMany(Gif,{
+  foreignKey:'author',
+  onDelete:'cascade'
 });
 
-Thread.belongsToMany(User,{
-  through: UserThread,
-  foreignKey: 'thread_id'
+Gif.belongsTo(User, {
+  foreignKey:'author',
 });
 
-Tag.belongsToMany(Gif, {
-  through: TagHandler,
-  foreignKey: 'gif_id',
-})
-
-Gif.belongsToMany(Tag, {
-  through: TagHandler,
-  foreignKey:'tag_id',
+Gif.hasMany(Comment,{
+  foreignKey:'gif_id',
+  onDelete:'cascade'
 });
 
-Comment.belongsTo(Thread, {
-  foreignKey: 'thread_id',
-})
+Comment.belongsTo(Gif, {
+  foreignKey:'gif_id',
+});
+
+User.hasMany(Comment, {
+  foreignKey:'author',
+});
+
+Comment.belongsTo(User,{
+  foreignKey:'author',
+  onDelete:'cascade'
+});
 
 module.exports = {
   User,
   Gif,
-  Thread,
-  Tag,
   Comment,
 };

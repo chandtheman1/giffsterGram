@@ -2,6 +2,8 @@ const router = require("express").Router();
 const { User } = require("../../models");
 const { route } = require("./gif-routes");
 
+//  ROUTE ./api/user/
+
 // Redirect route for user clicking sign up button on login screen
 router.get('/signup', (req, res) => {
   try {
@@ -12,7 +14,7 @@ router.get('/signup', (req, res) => {
   }
   
 });
-
+// POST to create User account
 router.post("/", (req, res) => {
   User.create({
     username: req.body.username,
@@ -33,7 +35,16 @@ router.post("/", (req, res) => {
     res.status(500).json(err);
   });
 });
-
+//GET LOGIN PAGE
+router.get('/login', (req, res) => {
+  try {
+    console.log('server');
+    res.status(200).render('login');
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+//Queries if the user can login
 router.post("/login", (req, res) => {
   User.findOne({
     where: {
@@ -61,7 +72,7 @@ router.post("/login", (req, res) => {
     });
   });
 });
-
+//Post Logout
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
     req.session.destroy(() => {
