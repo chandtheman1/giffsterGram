@@ -1,13 +1,21 @@
 <div class="container-fluid">
+    {{#if loggedIn}}
+    <div class="d-flex justify-content-right">
+     <button class="btn btn-outline-secondary mt-3" id="logout-link">logout</button>
+    </div>
+    {{/if}}
     <div class="d-flex justify-content-center my-5"><img src="/images/Logo.png" width="auto" height="200" id="logo"></div>
     <div class="d-flex justify-content-center m-1">
+        {{#unless  loggedIn}}
         <!-- Login Button - Autofocussed -->
         <input type="radio" class="btn-check" name="options" id="login-btn" autocomplete="off">
         <label class="btn btn-outline-secondary" for="login-btn">Login</label>
         <!-- SignUp Button - Prompts Redirect -->
         <input type="radio" class="btn-check" name="options" id="signup-btn" autocomplete="off">
         <label class="btn btn-outline-secondary" for="signup-btn">Sign Up</label>
+        {{/unless}}
     </div>
+      {{#if loggedIn}}
     <div class="d-flex justify-content-center m-1">
         <!-- Upload Button - Prompts Redirect -->
         <input type="radio" class="btn-check" name="options" id="upload-btn" autocomplete="off">
@@ -16,7 +24,9 @@
         <input type="radio" class="btn-check" name="options" id="creation-btn" autocomplete="off">
         <label class="btn btn-outline-info" for="creation-btn">Create</label>
     </div>
+    {{/if}}
 </div>
+
 
 {{#each gifs as |gif|}}
 <div class="d-flex justify-content-center">
@@ -29,4 +39,10 @@
 </div>
 {{/each}}
 
+
+ {{#if loggedIn}}
+ <script src="/js/uploadredirect.js"></script>
+<script src="/js/logout.js"></script>
+   {{else}}
 <script src="/js/loginredirect.js"></script>
+  {{/if}}
