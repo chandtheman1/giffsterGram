@@ -12,7 +12,7 @@ const loginFormHandler = async function(event) {
       headers: { "Content-Type": "application/json" }
     })
       .then(function() {
-        document.location.replace("/thread");
+        document.location.replace("/thread");  // <-------- Needs to be updated
       })
       .catch(err => console.log(err));
   };
