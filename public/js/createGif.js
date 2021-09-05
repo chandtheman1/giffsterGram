@@ -51,7 +51,7 @@ const downloadGif = async (event) => {
     } else {
         alert(response.statusText);
     }
-    document.location.replace("/api/upload/");
+    // document.location.replace("/api/upload/");
 }
 
 document.querySelector('.download').addEventListener('click', downloadGif);
