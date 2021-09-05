@@ -2,6 +2,25 @@ const router = require('express').Router();
 const {  Gif,Comment,User} = require('../models/');
 const withAuth = require("../utils/auth");
 
+// ROUTE ./home
+
+// Main homepage that the public users and authenticated users can see.
+router.get('/', async (req, res) => {
+
+  const gifData = await Gif.findAll();
+
+  const gifs = gifData.map(gif => {
+    const gifImage = gif.imageData.toString('base64')
+    return gif['imageData'] = gifImage
+  });
+
+  // const newGifData = gifData[0];
+  res.render('homepage', {
+    gifs
+  });
+  // res.json(newGifData);
+})
+
 // create commnets  with a gifId---working!!--localhost:3001/home/comment/2 
 router.post("/comment/:gifId",  (req, res) => {
 

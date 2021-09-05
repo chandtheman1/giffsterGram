@@ -8,9 +8,21 @@ User.hasMany(Gif,{
   onDelete:'cascade'
 });
 
+Gif.belongsTo(User, {
+  foreignKey:'author',
+});
+
 Gif.hasMany(Comment,{
   foreignKey:'gif_id',
   onDelete:'cascade'
+});
+
+Comment.belongsTo(Gif, {
+  foreignKey:'gif_id',
+});
+
+User.hasMany(Comment, {
+  foreignKey:'author',
 });
 
 Comment.belongsTo(User,{
