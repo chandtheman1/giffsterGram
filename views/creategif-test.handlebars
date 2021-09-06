@@ -32,9 +32,12 @@
 
 <div class="d-flex justify-content-center">
     <button type="button" class="btn btn-outline-info download my-2">Download</button>
+     <input type="radio" class="btn-check" name="options" id="upload-btn" autocomplete="off">
+    <label class="btn btn-outline-info download my-2" for="upload-btn">Upload Gif </label>
 </div>
 
 <script src="/js/createGif.js"></script>
 {{#if loggedIn}}
+ <script src="/js/uploadredirect.js"></script>
   <script src="/js/logout.js"></script>
 {{/if}}
