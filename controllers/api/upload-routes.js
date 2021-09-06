@@ -32,7 +32,8 @@ router.post('/uploadGif', upload.any(), async function (req, res) {
     const newGif = await Gif.create({
       name: req.body.name,
       imageData: req.files[0].buffer,
-      // TO BE ADDED author: req.session.user_id 
+
+     author: req.session.user_id 
      
     });
     
