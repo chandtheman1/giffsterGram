@@ -10,3 +10,20 @@
 #commentContainer {
     width: 100%;
 }
+
+/* upvote and downvote counter*/
+.counter-icon {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.red {
+    color: rgb(220, 53, 69);
+}
+
+.green {
+    color: rgb(25, 135, 84);
+}
