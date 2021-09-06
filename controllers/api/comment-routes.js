@@ -17,11 +17,11 @@ const withAuth = require("../../utils/auth");
 //   });
 // });
 
-router.post('/', async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   const newComment = await Comment.create({
     comment_text: req.body.comment_text,
     gif_id: req.body.gif_id,
-    author: req.session.user_id
+    author: req.session.userId
   });
 
   res.json(newComment);

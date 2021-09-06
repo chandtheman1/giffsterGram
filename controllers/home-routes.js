@@ -55,7 +55,7 @@ router.get('/gifs', async (req, res) => {
     newGif.id = gif.id;
     return newGif;
   });
-
+  console.log(`${req.session.username} testing`);
   // const newGifData = gifData.map(gif => {
   //   gif.get({plain: true});
   // });
@@ -63,7 +63,8 @@ router.get('/gifs', async (req, res) => {
   // const newGifData = gifData[0];
   res.render('homepage', {
     gifs,
-    loggedIn:true
+    loggedIn:true,
+    username: req.session.username
   });
   
   // res.json({gifData});

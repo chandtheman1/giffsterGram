@@ -14,7 +14,8 @@ const { GifUtil, GifCodec, BitmapImage, GifFrame } = require('gifwrap');
 router.get('/', (req, res) => {
   try {
     res.status(200).render('uploadgif-test' , { 
-       loggedIn : true
+       loggedIn : true,
+       username: req.session.username
       }); // <---- to be updated
   } catch (error) {
     res.status(500).error(error);
@@ -31,7 +32,8 @@ router.post('/uploadGif', upload.any(), async function (req, res) {
     const newGif = await Gif.create({
       name: req.body.name,
       imageData: req.files[0].buffer,
-      // TO BE ADDED author: req.session.user_id 
+
+     author: req.session.user_id 
      
     });
     
@@ -42,7 +44,8 @@ router.post('/uploadGif', upload.any(), async function (req, res) {
 //create Gif temp page
 router.get('/createGif', (req, res) => {
   res.render('creategif-test',{
-    loggedIn : true
+    loggedIn : true,
+    username: req.session.username
   });  // <-------- to be updated
 });
 
