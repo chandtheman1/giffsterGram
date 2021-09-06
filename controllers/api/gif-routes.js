@@ -25,9 +25,63 @@ router.get('/:id', withAuth, async (req, res) => {
   const newGifData = gifData.get({plain: true});
   const gif = gifData.imageData.toString('base64');
 
+  const count = newGifData.like - newGifData.dislike;
+
   res.render('commentPage', {
-    newGifData, gif
+    newGifData, gif, count
   });
+  // res.json(newGifData);
+});
+
+//Upvote button
+router.put('/:id/upvote', async (req, res) => {
+
+  const gifData = await Gif.findOne({
+    where: {
+      id: req.params.id
+    },
+  })
+
+  const newGifData = gifData.get({plain: true});
+  const newLike = newGifData.like++
+
+  const data = await Gif.update(
+    {
+      like: newGifData.like,
+    },
+    {
+      where: {
+        id: req.params.id
+      },
+  });
+
+  res.send(200);
+});
+
+//Downvote
+
+router.put('/:id/downvote', async (req, res) => {
+
+  const gifData = await Gif.findOne({
+    where: {
+      id: req.params.id
+    },
+  })
+
+  const newGifData = gifData.get({plain: true});
+  const newLike = newGifData.like--
+
+  const data = await Gif.update(
+    {
+      like: newGifData.like,
+    },
+    {
+      where: {
+        id: req.params.id
+      },
+  });
+
+  res.send(200);
 });
 
 router.post("/", withAuth, (req, res) => {
